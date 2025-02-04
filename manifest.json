@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Adfriend",
+    "version": "1.0",
+    "description": "Replace ads with motivational content",
+    "permissions": ["activeTab", "storage"],
+    "action": {
+        "default_popup": "popup/popup.html"
+    }
+}
