@@ -1,16 +1,23 @@
-fetch(chrome.runtime.getURL('quotes.json'))
-    .then(response => response.json())
-    .then(quotes => {
-        const ads = document.querySelectorAll('div[class*="ad"], iframe[src*="ads"]');
+// fetch user preference from chrome storage
+chrome.storage.sync.get("contentType", function(data) {
+    const selectedType = data.contentType || "quotes"
 
-        ads.forEach(ad => {
-            const quoteElement = document.createElement('div');
-            quoteElement.classList.add('motivational-quote');
+    const fileName = selectedType === "quotes" ? "quotes.json" : "reminders.json";
 
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            quoteElement.textContent = randomQuote;
+    fetch(chrome.runtime.getURL(fileName))
+        .then(response => response.json())
+        .then(contentArray => {
+            const ads = document.querySelectorAll('div[class*="ad"], iframe[src*="ads"]');
 
-            ad.replaceWith(quoteElement);
-        });
-    })
-    .catch(error => console.error("Error loading quotes:", error))
+            ads.forEach(ad => {
+                const contentElement = document.createElement('div');
+                contentElement.classList.add('motivational-quote');
+
+                const randomContent = contentArray[Math.floor(Math.random() * contentArray.length)];
+                contentElement.textContent = randomContent;
+
+                ad.replaceWith(contentElement);
+            });
+        })
+        .catch(error => console.error("Error loading content:", error));
+});

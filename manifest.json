@@ -11,12 +11,13 @@
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "js": ["scripts/content.js"]
+            "js": ["scripts/content.js"],
+            "css": ["styles/content.css"]
         }
     ],
     "web_accessible_resources": [
         {
-            "resources": ["quotes.json"],
+            "resources": ["quotes.json", "reminders.json"],
             "matches": ["<all_urls>"]
         }
     ]
