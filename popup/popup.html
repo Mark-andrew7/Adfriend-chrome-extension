@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>AdFriend</title>
-  <link rel="stylesheet" href="popup/popup.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdFriend</title>
+    <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h1>AdFriend</h1>
-  
-  <label>
-    <input type="radio" name="contentType" value="quotes" checked>
-    Motivational Quotes
-  </label>
-  <br>
-  <label>
-    <input type="radio" name="contentType" value="reminders" checked>
-    Productivity Reminders
-  </label>
+    <h1>AdFriend</h1>
+    <p>Replace ads with positivity!</p>
 
-  <button id="save">Save Preferences</button>
+    <div class="options">
+        <label>
+            <input type="radio" name="contentType" value="quotes"> Quotes
+        </label>
+        <label>
+            <input type="radio" name="contentType" value="reminders"> Reminders
+        </label>
+    </div>
 
-  <script src="popup.js"></script>
+    <button id="save">Save Preferences</button>
+    <p id="savedMessage" style="display: none; color: green;">Preferences saved!</p>
+
+    <script src="popup.js"></script>
 </body>
 </html>
